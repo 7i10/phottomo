@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ふぉっとも - AI Photo Coaching App
 
-## Getting Started
+写真撮影をAIでコーチングしてくれるプロトタイプアプリです。FUJIFILM製カメラを想定したBluetooth接続シミュレーション、カメラ・レンズ診断、そしてコーチングスタイルを選べる個別対応型のAIアドバイス機能を搭載しています。
 
-First, run the development server:
+## 機能
 
-```bash
+- **ホーム画面**: ふぉっともくんとともにアプリを探索
+- **カメラ接続**: Bluetoothでカメラを接続し、撮影データを受信（モック実装）
+- **AI撮影コーチング**: 撮影意図（風景・人物・感情的）に応じたカスタマイズされたアドバイスを提供
+- **カメラ診断**: 経験レベル（初級者・中級者・上級者）に応じた質問に答えることで、最適なFUJIFILMカメラを提案
+- **レンズ診断**: 撮影対象や条件に応じた最適なレンズを診断・提案
+- **コーチングスタイル設定**: 以下の4つのコーチングスタイルから選択可能
+  - **ロジカル博士**: 科学的・論理的な説明中心
+  - **寄り添いカウンセラー**: 優しく褒めて伸ばすスタイル
+  - **スパルタ鬼軍曹**: 厳しく効率重視のスタイル
+  - **ふぉっとも君**: のんびりマイペースで優しいスタイル
+
+## 必要な環境
+
+- Node.js 16.x以上
+- npm または yarn
+
+## インストール
+
+\`\`\`bash
+# リポジトリをクローン
+git clone https://github.com/7i10/phottomo.git
+cd phottomo
+
+# 依存パッケージをインストール
+npm install
+# または
+yarn install
+\`\`\`
+
+## 実行
+
+\`\`\`bash
+# 開発サーバーを起動
 npm run dev
-# or
+# または
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開くとアプリが表示されます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 使い方
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. ホーム画面
+- **AIコーチングを試す**: カメラ接続から撮影データ受信、AIアドバイスまでの一連の流れをシミュレート
+- **カメラを探す**: あなたに最適なFUJIFILMカメラを診断で見つける
+- **レンズを探す**: 撮影条件に合わせたレンズを診断で見つける
 
-## Learn More
+### 2. AIコーチング
+1. 「AIコーチングを試す」をタップ
+2. カメラ接続の画面でBluetooth接続をシミュレート
+3. 撮影データが自動で受信される（モックデータ）
+4. 撮影意図（風景・人物・感情的）を選択
+5. コーチングスタイルに応じたAIアドバイスを受け取る
 
-To learn more about Next.js, take a look at the following resources:
+### 3. カメラ診断
+1. 「カメラを探す」をタップ
+2. まず経験レベルを選択（初級者・中級者・上級者）
+3. レベルに応じた質問に回答
+4. あなたにぴったりなFUJIFILMカメラと代替案が表示される
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. レンズ診断
+1. 「レンズを探す」をタップ
+2. 撮影対象、経験レベル、焦点距離、予算について回答
+3. 推奨されたレンズと詳細情報が表示される
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 5. コーチングスタイル設定
+- 右上の設定ボタンから4つのコーチングスタイルから選択可能
+- AIアドバイスの口調がスタイルに応じて変わります
 
-## Deploy on Vercel
+## 技術スタック
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **フレームワーク**: Next.js 16
+- **言語**: TypeScript
+- **スタイリング**: Tailwind CSS
+- **UI コンポーネント**: shadcn/ui
+- **デザイン**: FUJIFILM ブランドカラーを使用したシンプルで上品なデザイン
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## プロジェクト構成
+
+\`\`\`
+src/
+├── app/
+│   ├── page.tsx              # メインページ
+│   ├── layout.tsx            # ルートレイアウト
+│   └── globals.css           # グローバルスタイル
+├── components/
+│   ├── app-header.tsx        # 共通ヘッダー
+│   ├── home-screen.tsx       # ホーム画面
+│   ├── survey-screen.tsx     # カメラ診断画面
+│   ├── lens-survey-screen.tsx    # レンズ診断画面
+│   ├── recommendation-screen.tsx  # カメラ推奨画面
+│   ├── lens-recommendation-screen.tsx # レンズ推奨画面
+│   ├── connecting-screen.tsx # カメラ接続画面
+│   ├── photo-data-screen.tsx # 撮影データ受信画面
+│   ├── advice-screen.tsx     # AIアドバイス画面
+│   └── settings-screen.tsx   # 設定画面
+└── public/
+    ├── phottomo.jpeg        # ふぉっともくんのキャラクター画像
+    └── （カメラ・レンズの画像）
+\`\`\`
+
+## 注意事項
+
+- このアプリはプロトタイプです。Bluetooth接続とカメラデータ受信はモック実装されています。
+- AIアドバイスは固定のコンテンツを使用しています。実装時には生成AIとの連携を予定しています。
+- デバイスの画面サイズに応じて、レスポンシブデザインで最適に表示されます。
+
+## ライセンス
+
+このプロジェクトはプロトタイプアプリです。
